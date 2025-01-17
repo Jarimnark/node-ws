@@ -1,8 +1,8 @@
 // index.js
 const WebSocket = require('ws');
-
+const PORT = process.env.PORT || 8080
 // Create a WebSocket server on port 8080
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: PORT });
 
 console.log('WebSocket server is running on ws://localhost:8080');
 

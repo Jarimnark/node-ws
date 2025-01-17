@@ -3,10 +3,13 @@ const { WebSocketServer } = require('ws');
 let wss; // WebSocket Server instance
 
 const handler = (req, res) => {
-    if (!wss) {
+    // console.log('test 123: ', wss)
+    // if (!wss) {
         wss = new WebSocketServer({ noServer: true });
+        // wss = new WebSocketServer({ port: "ws://node-ws-mu.vercel.app/" });
 
         wss.on('connection', (ws) => {
+            console.log('connecting')
             ws.on('message', (message) => {
                 console.log('Received:', message);
 
@@ -20,7 +23,7 @@ const handler = (req, res) => {
         });
 
         console.log('WebSocket server initialized');
-    }
+    // }
 
     if (req.method === 'GET') {
         res.status(200).send('WebSocket server is running.');
