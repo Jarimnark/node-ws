@@ -1,10 +1,20 @@
-// index.js
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Server is running');
+  }
+});
+
+
 const WebSocket = require('ws');
 const PORT = process.env.PORT || 8080
 // Create a WebSocket server on port 8080
 const wss = new WebSocket.Server({ port: PORT });
 
-console.log('WebSocket server is running on ws://localhost:8080');
+console.log(`WebSocket server is running on ws://localhost:${PORT}`);
 
 // Store connected clients
 const clients = new Set();
